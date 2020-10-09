@@ -1,0 +1,235 @@
+{
+  "bytes": 34598,
+  "datahub": {
+    "created": "2018-08-21T20:22:29.524242",
+    "findability": "published",
+    "flowid": "machine-learning/iris/3",
+    "modified": "2018-09-06T13:28:54.302077",
+    "owner": "machine-learning",
+    "ownerid": "machine-learning"
+  },
+  "description": "The resources for this dataset can be found at https://www.openml.org/d/61\n\nAuthor: R.A. Fisher  \nSo",
+  "hash": "c98d25d2e4c199e5ab326da494905001",
+  "id": "machine-learning/iris",
+  "licenses": [
+    {
+      "name": "ODC-PDDL",
+      "path": "http://opendatacommons.org/licenses/pddl/",
+      "title": "Open Data Commons Public Domain Dedication and License"
+    }
+  ],
+  "name": "iris",
+  "resources": [
+    {
+      "bytes": 7487,
+      "datahub": {
+        "type": "original"
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/rawstore.datahub.io/ad484452702105cbf3d30f8deaba39a9.arff",
+      "encoding": "ISO-8859-1",
+      "format": "arff",
+      "name": "iris_arff",
+      "path": "archive/iris_arff.arff",
+      "pathType": "local",
+      "profile": "data-resource"
+    },
+    {
+      "bytes": 4602,
+      "datahub": {
+        "type": "original"
+      },
+      "dialect": {
+        "delimiter": ",",
+        "quoteChar": "\""
+      },
+      "dpp:streamedFrom": "https://s3.amazonaws.com/rawstore.datahub.io/8bce8766530bf404228ea3fc026dfee3.csv",
+      "encoding": "ISO-8859-1",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "name": "iris_original",
+      "path": "archive/iris.csv",
+      "pathType": "local",
+      "profile": "data-resource",
+      "schema": {
+        "fields": [
+          {
+            "format": "default",
+            "name": "sepallength",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "sepalwidth",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "petallength",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "petalwidth",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "class",
+            "type": "string"
+          }
+        ],
+        "missingValues": [
+          ""
+        ]
+      }
+    },
+    {
+      "bytes": 992,
+      "datahub": {
+        "type": "derived/report"
+      },
+      "description": "Validation report for tabular data",
+      "dpp:streamedFrom": "/tmp/tmpsmper9mb/machine-learning/iris/validation_report/data/736ac83fd08de23c3f8b16267d425545/validation_report.json",
+      "format": "json",
+      "hash": "736ac83fd08de23c3f8b16267d425545",
+      "name": "validation_report",
+      "path": "data/validation_report.json",
+      "profile": "data-resource"
+    },
+    {
+      "bytes": 4753,
+      "datahub": {
+        "derivedFrom": [
+          "iris"
+        ],
+        "type": "derived/csv"
+      },
+      "delimiter": ",",
+      "dialect": {
+        "delimiter": ",",
+        "doubleQuote": true,
+        "lineTerminator": "\r\n",
+        "quoteChar": "\"",
+        "skipInitialSpace": false
+      },
+      "dpp:streamedFrom": "/tmp/tmpsmper9mb/machine-learning/iris/iris_csv/data/8bce8766530bf404228ea3fc026dfee3/iris_csv.csv",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hash": "8bce8766530bf404228ea3fc026dfee3",
+      "mediatype": "text/csv",
+      "name": "iris_csv",
+      "path": "data/iris_csv.csv",
+      "pathType": "local",
+      "profile": "data-resource",
+      "quotechar": "\"",
+      "rowcount": 150,
+      "schema": {
+        "fields": [
+          {
+            "decimalChar": ".",
+            "format": "default",
+            "groupChar": "",
+            "name": "sepallength",
+            "type": "number"
+          },
+          {
+            "decimalChar": ".",
+            "format": "default",
+            "groupChar": "",
+            "name": "sepalwidth",
+            "type": "number"
+          },
+          {
+            "decimalChar": ".",
+            "format": "default",
+            "groupChar": "",
+            "name": "petallength",
+            "type": "number"
+          },
+          {
+            "decimalChar": ".",
+            "format": "default",
+            "groupChar": "",
+            "name": "petalwidth",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "class",
+            "type": "string"
+          }
+        ],
+        "missingValues": [
+          ""
+        ]
+      },
+      "signed": true
+    },
+    {
+      "bytes": 15801,
+      "datahub": {
+        "derivedFrom": [
+          "iris"
+        ],
+        "type": "derived/json"
+      },
+      "delimiter": ",",
+      "dialect": {
+        "delimiter": ",",
+        "quoteChar": "\""
+      },
+      "dpp:streamedFrom": "/tmp/tmpsmper9mb/machine-learning/iris/iris_json/data/23a7b3de91da915b506f7ca23f6d1141/iris_json.json",
+      "encoding": "utf-8",
+      "format": "json",
+      "hash": "23a7b3de91da915b506f7ca23f6d1141",
+      "mediatype": "text/csv",
+      "name": "iris_json",
+      "path": "data/iris_json.json",
+      "pathType": "local",
+      "profile": "data-resource",
+      "quotechar": "\"",
+      "rowcount": 150,
+      "schema": {
+        "fields": [
+          {
+            "format": "default",
+            "name": "sepallength",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "sepalwidth",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "petallength",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "petalwidth",
+            "type": "number"
+          },
+          {
+            "format": "default",
+            "name": "class",
+            "type": "string"
+          }
+        ],
+        "missingValues": [
+          ""
+        ]
+      },
+      "signed": true
+    },
+    {
+      "bytes": 963,
+      "dpp:streamedFrom": "/tmp/tmpzfy0g1dt/README.md",
+      "format": "md",
+      "name": "readme",
+      "path": "README.md"
+    }
+  ],
+  "title": "Iris"
+}

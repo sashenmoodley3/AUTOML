@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flate - AutoML</title>
+  <script src="assets/libs/jquery.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <!-- <link rel='stylesheet' href='assets/css/font-awesome.min.css'> -->
+  <link rel='stylesheet' href='assets/css/fonts.googleapis.css'>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+  <!-- Libaray -->
+  <script src="assets/libs/alertify.js"></script>
+ 
+  <script src="assets/libs/jquery.handsontable.full.js"></script>
+
+  <link rel="stylesheet" media="screen" href="assets/css/jquery.handsontable.full.css">
+  <!-- <link rel="stylesheet" media="screen" href="assets/css/samples.css"> -->
+  <link rel="stylesheet" media="screen" href="assets/css/alertify.css">
+
+  <!------------->
+  <div class="topnav">
+    <a class="active" href="index.html">Home</a>
+    <a href="info.html">Training Info</a>
+    <a href="pred.html">Predict</a>
+  </div>
+  <!-- partial:index.partial.html -->
+  <div id="containerParent">
+  <div id="left">
+    <div class="upload">
+      <div class="upload-files">
+        <header>
+          <p>
+            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+            <span class="up">up</span>
+            <span class="load">load</span>
+          </p>
+        </header>
+        <div class="body" id="drop">
+          <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
+          <p class="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to
+            begin the upload</p>
+            <input type="file" id="file"/>
+          <!-- <input type="file" multiple="multiple" /> -->
+        </div>
+        <footer>
+          <div class="divider">
+            <span>
+              <AR>FILES</AR>
+            </span>
+          </div>
+          <div class="list-files">
+            <!--   template   -->
+          </div>
+          <button class="importar">UPDATE FILES</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <div id="right">
+    <div id="headerGrid">
+      <p class="gridHeader">Spreadsheet Data Table</p>
+    </div>
+    <div style="margin: 0px 10px 10px 10px;">
+      <div style="margin: 30px">
+        <label style="margin: 0px 0px 10px 0px;">Enter an SQL select statement (query updates as you type): &nbsp; &nbsp;</label>
+        <input type="text" id="sql" disabled="true" class="winpt"/>
+      </div>
+      <!-- <input type="submit" id="exporter" value="Export Results" onclick="exportit();" disabled> -->
+      <pre id="sqlpre">SQL Errors will show up here</pre>
+      <div id="hot" style="overflow: scroll" class="handsontable" style="position: fixed;"></div>
+      <div id="footnote">
+    </div>
+    </div>
+  </div>
+</div>
+<div class="bottomnavbar">
+  <i id="submitClicked" class="fa fa-rocket submitRocketML" aria-hidden="true"></i>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="container" style="width: 100%;">
+      <div class="row">
+        <section>
+            <div class="wizard">
+                <div class="wizard-inner">
+                    <div class="connecting-line"></div>
+                    <ul class="nav nav-tabs" role="tablist">
+    
+                        <li role="presentation" class="active">
+                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                </span>
+                            </a>
+                        </li>
+    
+                        <li role="presentation" class="disabled">
+                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <!-- <li role="presentation" class="disabled">
+                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                            </a>
+                        </li> -->
+    
+                        <li role="presentation" class="disabled">
+                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <form role="form">
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="step1">
+                            <h4 style="margin-bottom: 25px;">Step 1 - Data Column selection</h4>
+                            <div class="form-group">
+                              <label for="sel1">Select Column you want to predict on:</label>
+                              <select class="form-control" id="yDropDown">
+                              </select>
+                            </div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-primary next-step">Next</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step2">
+                            <h3>Step 2 - Training Settings</h3>
+                            <div>
+                              <p style="margin-bottom: 5px !important; margin-top: 14px;">Model name:</p>
+                              <input id="InModelName" class="form-control"></input>
+                              <p style="margin-bottom: 5px !important; margin-top: 14px;">Training Time (seconds):</p>
+                              <input id="InTrainTime" style="margin-bottom: 15px;" class="form-control"></input>    
+                            </div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                <li><button type="button" class="btn btn-primary next-step" onclick="exportit();">Save and continue</button></li>
+                            </ul>
+                        </div>
+                        <!-- <div class="tab-pane" role="tabpanel" id="step3">
+                            <h3>Step 3</h3>
+                            <p>This is step 3</p>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                            </ul>
+                        </div> -->
+                        <div class="tab-pane" role="tabpanel" id="complete">
+                            <h3>Complete</h3>
+                            <p>You have successfully completed all steps.</p>
+                            <p>You will recieve an email when training is completed</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+       </div>
+    </div>
+  </div>
+
+</div>
+  <!-- partial -->
+  <script data-cfasync="false" src="assets/libs/email-decode.min.js"></script>
+  <script type="text/javascript" src="assets/libs/shim.min.js"></script>
+  <script type="text/javascript" src="assets/libs/xlsx.full.min.js"></script>
+  <script src="assets/libs/dropsheet.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script src="assets/libs/spin.js"></script>
+</body>
+
+</html>

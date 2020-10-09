@@ -1,0 +1,663 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  /* background: -webkit-gradient(linear, left bottom, left top, from(#4F6072), to(#8699AA)); */
+  background: linear-gradient(to top, #b0cac7, #ffffff);
+  /* display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center; */
+}
+
+.upload {
+  /* position: absolute; */
+  width: 400px;
+  min-height: 292px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding-bottom: 20px;
+  background: #fff;
+  -webkit-animation: fadeup .5s .5s ease both;
+          animation: fadeup .5s .5s ease both;
+  -webkit-transform: translateY(20px);
+          transform: translateY(20px);
+  opacity: 0;
+}
+.upload .upload-files header {
+  background: #4db6ac;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+}
+.upload .upload-files header p {
+  color: #fff;
+  font-size: 40px;
+  margin: 0;
+  padding: 50px 0;
+}
+.upload .upload-files header p i {
+  -webkit-transform: translateY(20px);
+          transform: translateY(20px);
+  opacity: 0;
+  font-size: 30px;
+  -webkit-animation: fadeup .5s 1s ease both;
+          animation: fadeup .5s 1s ease both;
+}
+.upload .upload-files header p .up {
+  font-weight: bold;
+  -webkit-transform: translateX(-20px);
+          transform: translateX(-20px);
+  display: inline-block;
+  opacity: 0;
+  -webkit-animation: faderight .5s 1.5s ease both;
+          animation: faderight .5s 1.5s ease both;
+}
+.upload .upload-files header p .load {
+  display: inline-block;
+  font-weight: 100;
+  margin-left: -8px;
+  -webkit-transform: translateX(-20px);
+          transform: translateX(-20px);
+  opacity: 0;
+  -webkit-animation: faderight 1s 1.5s ease both;
+          animation: faderight 1s 1.5s ease both;
+}
+.upload .upload-files .body {
+  text-align: center;
+  padding: 50px 0;
+  padding-bottom: 30px;
+}
+.upload .upload-files .body.hidden {
+  display: none;
+}
+.upload .upload-files .body input {
+  visibility: hidden;
+}
+.upload .upload-files .body i {
+  font-size: 65px;
+  color: lightgray;
+}
+.upload .upload-files .body p {
+  font-size: 14px;
+  padding-top: 15px;
+  line-height: 1.4;
+}
+.upload .upload-files .body p b,
+.upload .upload-files .body p a {
+  color: #4db6ac;
+}
+.upload .upload-files .body.active {
+  border: dashed 2px #4db6ac;
+}
+.upload .upload-files .body.active i {
+  box-shadow: 0 0 0 -3px #fff, 0 0 0 lightgray, 0 0 0 -3px #fff, 0 0 0 lightgray;
+  -webkit-animation: file .5s ease both;
+          animation: file .5s ease both;
+}
+@-webkit-keyframes file {
+  50% {
+    box-shadow: -8px 8px 0 -3px #fff, -8px 8px 0 lightgray, -8px 8px 0 -3px #fff, -8px 8px 0 lightgray;
+  }
+  75%,
+          100% {
+    box-shadow: -8px 8px 0 -3px #fff, -8px 8px 0 lightgray, -16px 16px 0 -3px #fff, -16px 16px 0 lightgray;
+  }
+}
+@keyframes file {
+  50% {
+    box-shadow: -8px 8px 0 -3px #fff, -8px 8px 0 lightgray, -8px 8px 0 -3px #fff, -8px 8px 0 lightgray;
+  }
+  75%,
+          100% {
+    box-shadow: -8px 8px 0 -3px #fff, -8px 8px 0 lightgray, -16px 16px 0 -3px #fff, -16px 16px 0 lightgray;
+  }
+}
+.upload .upload-files .body.active .pointer-none {
+  pointer-events: none;
+}
+.upload .upload-files footer {
+  width: 100%;
+  margin: 0 auto;
+  height: 0;
+}
+.upload .upload-files footer .divider {
+  margin: 0 auto;
+  width: 0;
+  border-top: solid 4px #46aba1;
+  text-align: center;
+  overflow: hidden;
+  -webkit-transition: width .5s ease;
+  transition: width .5s ease;
+}
+.upload .upload-files footer .divider span {
+  display: inline-block;
+  -webkit-transform: translateY(-25px);
+          transform: translateY(-25px);
+  font-size: 12px;
+  padding-top: 8px;
+}
+.upload .upload-files footer.hasFiles {
+  height: auto;
+}
+.upload .upload-files footer.hasFiles .divider {
+  width: 100%;
+}
+.upload .upload-files footer.hasFiles .divider span {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: -webkit-transform .5s .5s ease;
+  transition: -webkit-transform .5s .5s ease;
+  transition: transform .5s .5s ease;
+  transition: transform .5s .5s ease, -webkit-transform .5s .5s ease;
+}
+.upload .upload-files footer .list-files {
+  width: 320px;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding-left: 5px;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 210px;
+}
+.upload .upload-files footer .list-files::-webkit-scrollbar-track {
+  background-color: rgba(211, 211, 211, 0.25);
+}
+.upload .upload-files footer .list-files::-webkit-scrollbar {
+  width: 4px;
+  background-color: rgba(211, 211, 211, 0.25);
+}
+.upload .upload-files footer .list-files::-webkit-scrollbar-thumb {
+  background-color: rgba(77, 182, 172, 0.5);
+}
+.upload .upload-files footer .list-files .file {
+  width: 300px;
+  min-height: 50px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+  opacity: 0;
+  -webkit-animation: fade .35s ease both;
+          animation: fade .35s ease both;
+}
+.upload .upload-files footer .list-files .file .name {
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 80px;
+  text-align: left;
+}
+.upload .upload-files footer .list-files .file .progress {
+  width: 175px;
+  height: 5px;
+  border: solid 1px lightgray;
+  border-radius: 2px;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(77, 182, 172, 0.2)), to(rgba(77, 182, 172, 0.8))) no-repeat;
+  background: linear-gradient(to left, rgba(77, 182, 172, 0.2), rgba(77, 182, 172, 0.8)) no-repeat;
+  background-size: 100% 100%;
+}
+.upload .upload-files footer .list-files .file .progress.active {
+  -webkit-animation: progress 30s linear;
+          animation: progress 30s linear;
+}
+@-webkit-keyframes progress {
+  from {
+    background-size: 0 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+@keyframes progress {
+  from {
+    background-size: 0 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+.upload .upload-files footer .list-files .file .done {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background: #4db6ac;
+  border-radius: 50%;
+  margin-left: -10px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  position: relative;
+}
+.upload .upload-files footer .list-files .file .done:before {
+  content: "View";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  font-size: 24px;
+  opacity: 0;
+}
+.upload .upload-files footer .list-files .file .done:hover:before {
+  -webkit-transition: all .25s ease;
+  transition: all .25s ease;
+  top: -30px;
+  opacity: 1;
+}
+.upload .upload-files footer .list-files .file .done.anim {
+  -webkit-animation: done1 .5s ease forwards;
+          animation: done1 .5s ease forwards;
+}
+.upload .upload-files footer .list-files .file .done.anim #path {
+  -webkit-animation: done2 2.5s .5s ease forwards;
+          animation: done2 2.5s .5s ease forwards;
+}
+.upload .upload-files footer .list-files .file .done #path {
+  stroke-dashoffset: 7387.59423828125;
+  stroke-dasharray: 7387.59423828125 7387.59423828125;
+  stroke: #fff;
+  fill: transparent;
+  stroke-width: 50px;
+}
+@-webkit-keyframes done2 {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes done2 {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes done1 {
+  50% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: scale(0.25);
+            transform: scale(0.25);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 1;
+  }
+}
+@keyframes done1 {
+  50% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: scale(0.25);
+            transform: scale(0.25);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 1;
+  }
+}
+.upload .upload-files footer .importar {
+  outline: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  margin: auto;
+  border: solid 1px #47a69d;
+  color: #47a69d;
+  background: transparent;
+  padding: 8px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  font-family: Roboto;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-transform: translateY(15px);
+          transform: translateY(15px);
+  opacity: 0;
+  visibility: hidden;
+  margin-left: calc(50% - 40px);
+}
+.upload .upload-files footer .importar.active {
+  -webkit-transition: opacity .5s 1.5s ease, background, -webkit-transform .5s 1.5s ease;
+  transition: opacity .5s 1.5s ease, background, -webkit-transform .5s 1.5s ease;
+  transition: transform .5s 1.5s ease, opacity .5s 1.5s ease, background;
+  transition: transform .5s 1.5s ease, opacity .5s 1.5s ease, background, -webkit-transform .5s 1.5s ease;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+.upload .upload-files footer .importar:hover {
+  background: #4db6ac;
+  color: #fff;
+}
+@-webkit-keyframes fadeup {
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeup {
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes faderight {
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes faderight {
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 400px) {
+  .upload {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #2f746d;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: #2f746d;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #47a69d;
+  color: white;
+}
+
+
+.bottomnavbar {
+  background-color: #214e4a;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100
+}
+
+.downloadPredData {
+  color: #fff;
+  background-color: #2f746d !important;
+  border-color: #2f746d !important;
+}
+
+.submitRocketML{
+  float: right;
+  font-size: 19px;
+  margin: 6px;
+  color: #cddedc;
+  border: 2px solid;
+  border-radius: 50%;
+  border-color: #cddedc;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.submitrightML{
+  float: right;
+  font-size: 19px;
+  margin: 6px;
+  color: #cddedc;
+  border: 2px solid;
+  border-radius: 50%;
+  border-color: #cddedc;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.submitleftML{
+  float: left;
+  font-size: 19px;
+  margin: 6px;
+  color: #cddedc;
+  border: 2px solid;
+  border-radius: 50%;
+  border-color: #cddedc;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.submitcheckML{
+  float: right;
+  font-size: 19px;
+  margin: 6px;
+  color: #cddedc;
+  border: 2px solid;
+  border-radius: 50%;
+  border-color: #cddedc;
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+/**
+ * Handsontable
+ */
+
+ .handsontable {
+  margin-bottom: 10px;
+  color: #000;
+  z-index: 2;
+  font-size: 12px;
+  
+}
+
+.handsontable li {
+  margin-bottom: 0; /* will be not needed after Handsontable 0.8.16 */
+}
+
+/**
+ * text
+ */
+
+ a {
+  text-decoration: none;
+  color: #4267B6;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 .small {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+p .small {
+  font-size: 13px;
+  margin-top: 60px;
+}
+
+.nobreak {
+  white-space: nowrap;
+}
+
+pre {
+  clear: left;
+}
+
+ul,
+ol,
+p,
+.descLayout pre {
+  margin-bottom: 1.5em;
+  clear: left;
+}
+
+li {
+  margin-bottom: 1.3em;
+}
+
+ul.tight li {
+  margin-bottom: 0.3em;
+}
+
+ul {
+  padding-left: 30px;
+}
+
+ul ul {
+  margin-top: 1.5em;
+}
+
+.descLayout pre {
+  margin-left: 0.5em;
+}
+
+.warning {
+  border: 1px solid #D4D8EB;
+  padding: 10px;
+  background: #F0F1F8;
+  box-shadow: 2px 2px 7px #777;
+  margin-bottom: 40px;
+}
+
+.warning strong {
+  background: #747477;
+  color: #FFF;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+/**
+ * home page
+ */
+ .alert {
+  color: #c09853;
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#containerParent {
+  display: flex;
+}
+
+#left {
+  /* position:absolute; */
+  /* top: 25%; */
+  margin: 10px;
+}
+#right {
+  flex: 1;
+  /* position:absolute; */
+  /* left:38%; */
+  margin: 10px;
+  /* top: 25%; */
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+  padding:25px;
+}
+#header {
+  height:168px;
+}
+
+.winpt { width:98%; }
+.success { color: #468847; }
+.error { color: #b94a48; }
+.info { color: #3a87ad; }
+pre { white-space: pre-wrap; }
+
+.gridHeader {
+  background-color: #4eb6ac;
+  padding: 14px;
+  margin: 0;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: larger;
+  border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 2; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; 
+}
